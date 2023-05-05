@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Tema Escuro</title>
+  <style>
+    /* Define as cores do tema escuro */
+    body {
+      background-color: #232323;
+      color: #fff;
+    }
+    
+    /* Centralize o formulário de login */
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    
+    /* Estilo dos campos de entrada */
+    input[type="text"], input[type="password"] {
+      background-color: #404040;
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    
+    /* Estilo do botão de login */
+    input[type="submit"] {
+      background-color: #6b5b95;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      color: #fff;
+      cursor: pointer;
+    }
+    
+    /* Estilo do link para redefinir a senha */
+    a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    
+    /* Estilo do título do formulário */
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .error-message {
+      color: red;
+      position: fixed;
+      top: 0;
+      left: 25%;
+      width: 50%;
+      text-align: center;
+      background-color: #ffe6e6;
+      padding: 10px;
+      border-radius: 5px;
+    }    
+
+    .register {
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+      margin-left: 20px;
+      position: absolute;
+      background-color: #ae9ed6;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+  {% if error %}
+  <p class="error-message">{{ error }}</p>
+  {% endif %}
+  <button class="register"><a href="{{ url_for('cadastro')}}">Cadastrar-se</a></button>
+  <form method="POST" action="/login">
+    <h1>Login</h1>
+    <input type="text" placeholder="Nome de usuário" id="username" name="username">
+    <input type="password" placeholder="Senha" id="password" name="password">
+    <input type="submit" value="Entrar">
+
+  </form>
+</body>
+</html>
+
+<script>
+  // seleciona o elemento da mensagem de erro
+  const errorMessage = document.querySelector('.error-message');
+
+  // verifica se a mensagem de erro existe e aguarda 10 segundos antes de removê-la
+  if (errorMessage) {
+    setTimeout(() => {
+      errorMessage.remove();
+    }, 10000);
+  }
+</script>
