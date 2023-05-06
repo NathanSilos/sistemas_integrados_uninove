@@ -151,6 +151,21 @@
         flex-direction: row;
         margin: auto;
       }
+
+      .register {
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+      margin-left: 20px;
+      position: absolute;
+      background-color: #ae9ed6;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      color: #fff;
+      cursor: pointer;
+    }
+
     </style>
   </head>
   <body>
@@ -159,6 +174,7 @@
       <p>{{ error }}</p>
     </div>
     {% endif %}
+    <button class="register"><a href="{{ url_for('edit_cadastro')}}">Editar Cadastro</a></button>
     <div class="container">
       <h1>Minhas Tarefas</h1>
       <div class="task-list">

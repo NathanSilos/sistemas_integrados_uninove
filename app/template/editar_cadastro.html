@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro - Tema Escuro</title>
+  <style>
+    /* Define as cores do tema escuro */
+    body {
+      background-color: #232323;
+      color: #fff;
+    }
+    
+    /* Centralize o formulário de cadastro */
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    
+    /* Estilo dos campos de entrada */
+    input[type="text"], input[type="email"], input[type="password"] {
+      background-color: #404040;
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    
+    /* Estilo do botão de cadastro */
+    input[type="submit"] {
+      background-color: #6b5b95;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      color: #fff;
+      cursor: pointer;
+    }
+    
+    /* Estilo do título do formulário */
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .register {
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+      margin-left: 20px;
+      position: absolute;
+      background-color: #ae9ed6;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .error-message {
+      color: rgb(53, 85, 2);
+      position: fixed;
+      top: 0;
+      left: 25%;
+      width: 50%;
+      text-align: center;
+      background-color: #ffe6e6;
+      padding: 10px;
+      border-radius: 5px;
+    }    
+
+  </style>
+</head>
+<body>
+  {% if error %}
+  <p class="error-message">{{ error }}</p>
+  {% endif %}
+  <button class="register"><a href="{{ url_for('home')}}">Home</a></button>
+  <form method="POST">
+    <h1>Editar Cadastro</h1>
+    <h4>O que quiser manter igual, apenas preencha como está hoje! =D</h4>
+    <input type="text" placeholder="Nome completo" name="name">
+    <input type="email" placeholder="E-mail" name="email">
+    <input type="text" placeholder="Nome de usuário" name="username">
+    <input type="password" placeholder="Senha" name="password">
+    <input type="submit" value="Atualizar">
+  </form>
+</body>
+</html>

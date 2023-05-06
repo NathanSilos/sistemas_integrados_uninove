@@ -168,5 +168,39 @@ def login():
         else:
             return render_template('login.html', error='Login Inválido')
 
+# Pagina home de tasks
+@app.route('/editar_cadastro', methods=['GET', 'POST'])
+def edit_cadastro():
+    if request.method == 'GET':
+
+        return render_template('editar_cadastro.html')
+    
+    if request.method == 'POST':
+        # Atualiza na API novas infos
+        info_edit_cadastro(
+            request.form['name'],
+            request.form['email'],
+            session['username'],
+            session['password'],
+            session['token']
+        )
+
+        # Atualiza senha
+        edit_password(
+            session['username'],
+            session['password'],
+            request.form['username'],
+            request.form['password'],
+            session['token']
+        )
+
+        # Atualiza na session o username e pwd
+        session['username'] = request.form['username']
+        session['password'] = request.form['password']
+
+        return render_template('editar_cadastro.html', error='Informações atualizadas!! =D')
+
+
+    
 if __name__ == '__main__':
     app.run()

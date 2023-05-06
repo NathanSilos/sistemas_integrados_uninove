@@ -115,3 +115,48 @@ def edit_task(id, token):
     dicionario = json.loads(dados.text)
 
     return dicionario
+
+def info_edit_cadastro(name, email, user, pwd, token):
+    resource = 'user'
+    service = 'update'
+    url = f"https://todolist-api.edsonmelo.com.br/api/{resource}/{service}/"
+
+    payload = {
+    "name": name,
+    "email": email,
+    "username": user,
+    "password": pwd,
+    "picture": None
+    }
+
+    headers = {
+        'Content-type': 'application/json', 
+        "Authorization": token
+        }
+
+    dados = rs.put(url, data=json.dumps(payload), headers=headers)
+    dicionario = json.loads(dados.text)
+
+    return dicionario
+
+def edit_password(user_old, pwd_old, new_user, new_pwd, token):
+    resource = 'user'
+    service = 'updateuserpass'
+    url = f"https://todolist-api.edsonmelo.com.br/api/{resource}/{service}/"
+
+    payload = {
+    "username": user_old,
+    "password": pwd_old,
+    "new_username": new_user,
+    "new_password": new_pwd
+    } 
+    
+    headers = {
+        'Content-type': 'application/json', 
+        "Authorization": token
+        }
+
+    dados = rs.put(url, data=json.dumps(payload), headers=headers)
+    dicionario = json.loads(dados.text)
+
+    return dicionario
