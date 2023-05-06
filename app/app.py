@@ -3,7 +3,10 @@ from functions import *
 import logging
 
 logging.basicConfig(level=logging.INFO)
-app = Flask(__name__, template_folder=r'C:\Users\natha\Documents\01-Projetos\sistemas_integrados_uninove\app\template')
+# Pega o caminho atual do arquivo com os templates
+app = Flask(__name__)
+
+print(app.template_folder)
 
 # chave secreta para criptografia da session
 app.secret_key = 'teste_chave'
