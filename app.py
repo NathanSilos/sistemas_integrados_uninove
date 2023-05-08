@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from functions import *
-import logging
+# import logging
 
-logging.basicConfig(level=logging.INFO)
+# logging.basicConfig(level=logging.INFO)
 # Pega o caminho atual do arquivo com os templates
 app = Flask(__name__)
 
@@ -30,9 +30,9 @@ def cadastro():
             "username": request.form['username'],
             "password": request.form['password']}
         
-        logging.info(payload)
+        # logging.info(payload)
         dic = cadastrar_usuario(payload)
-        logging.info(dic)
+        # logging.info(dic)
         
         if 'User Already Exists' in str(dic.items()):
             return render_template('cadastro.html', error='Usuário já cadastrado.')
